@@ -58,9 +58,7 @@ app.get('/user/scores/:name', (request, response) => {
 })
 
 app.get('/user/newScore/:login/:value', (request, response) => {
-    const validat = helper.validateScore(request.params.value)
     console.log(request.params)
-    if (validat.val) {
         helper.getUserIdByLogin(request.params.login)
             .then((id) => {
                 helper.addNewScore(id, request.params.value)
@@ -68,7 +66,6 @@ app.get('/user/newScore/:login/:value', (request, response) => {
                         response.sendStatus(200);
                     })
             })
-    }
 })
 
 app.get('/top', (request, response) => {
